@@ -15,7 +15,7 @@ export default {
     return apiClient.get('/tasks')
   },
   getTask(id) {
-    return apiClient.get('/tasks/' + id)
+    return apiClient.get(`/tasks/${id}`)
   },
   createTask(task) {
     return apiClient.post('/tasks', task)

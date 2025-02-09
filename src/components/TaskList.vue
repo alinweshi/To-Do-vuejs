@@ -1,8 +1,8 @@
 <template>
   <div class="task-list">
     <h1 class="title">Task List</h1>
-
-    <div v-if="tasks.length" class="task-container">
+    <p v-if="loading" class="loading">Loading tasks...</p>
+    <div v-else-if="tasks.length" class="task-container">
       <div v-for="task in tasks" :key="task.id" class="task-card">
         <div v-if="editingTask !== task.id" class="task-details">
           <h3 class="task-title">{{ task.title }}</h3>
@@ -14,6 +14,8 @@
         <input v-else v-model="task.title" class="edit-input" @keyup.enter="updateTask(task)" />
 
         <div class="task-actions">
+          <button class="btn show" @click="getTask(task.id)">show</button>
+
           <button v-if="editingTask !== task.id" class="btn edit" @click="editTask(task.id)">
             ✏️ Edit
           </button>
@@ -23,7 +25,7 @@
       </div>
     </div>
 
-    <p v-else class="no-tasks">No tasks available.</p>
+    <p v-else-if="tasks.length === 0" class="no-tasks">No tasks available.</p>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ export default {
     return {
       tasks: [],
       editingTask: null,
+      loading: true, // Add a loading state
     }
   },
   async created() {
@@ -42,11 +45,23 @@ export default {
   },
   methods: {
     async fetchTasks() {
+      this.loading = true
       try {
         const response = await api.getTasks()
         this.tasks = response.data
       } catch (error) {
         console.error('Error fetching tasks:', error)
+      } finally {
+        this.loading = false // Update loading state
+      }
+    },
+    async getTask(taskId) {
+      try {
+        const response = await api.getTask(taskId)
+        console.log('Task details:', response.data)
+        this.$router.replace(`/tasks/${taskId}`)
+      } catch (error) {
+        console.error('Error fetching task:', error)
       }
     },
     editTask(taskId) {

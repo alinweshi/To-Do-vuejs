@@ -18,6 +18,12 @@ const router = createRouter({
           component: () => import('@/components/TaskList.vue'),
         },
         {
+          name: 'task-details',
+          path: '/tasks/:taskId',
+          component: () => import('@/components/TaskDetails.vue'),
+          props: true, // Allow route params as props in the component
+        },
+        {
           name: 'categories',
           path: '/categories',
           component: () => import('@/components/CategoryList.vue'),
