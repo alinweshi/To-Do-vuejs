@@ -32,7 +32,7 @@ export default {
     return apiClient.get('/categories')
   },
   getCategory(id) {
-    return apiClient.get('/categories/' + id)
+    return apiClient.get(`/categories/${id}`)
   },
   createCategory(category) {
     return apiClient.post('/categories', category)

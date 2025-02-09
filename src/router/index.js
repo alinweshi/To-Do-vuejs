@@ -29,6 +29,18 @@ const router = createRouter({
           component: () => import('@/components/CategoryList.vue'),
           props: true, // Allow route params as props in the component
         },
+        {
+          name: 'category-details',
+          path: '/categories/:categoryId',
+          component: () => import('@/components/CategoryDetails.vue'),
+          props: true, // Allow route params as props in the component
+        },
+        {
+          name: 'profile',
+          path: '/profiles/:userId',
+          component: () => import('@/components/UserProfile.vue'),
+          props: true, // Allow route params as props in the component
+        },
       ],
     },
 

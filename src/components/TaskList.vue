@@ -14,7 +14,7 @@
         <input v-else v-model="task.title" class="edit-input" @keyup.enter="updateTask(task)" />
 
         <div class="task-actions">
-          <button class="btn show" @click="getTask(task.id)">show</button>
+          <button class="btn show" @click="getTask(task.id)">👁️ Show</button>
 
           <button v-if="editingTask !== task.id" class="btn edit" @click="editTask(task.id)">
             ✏️ Edit
@@ -186,6 +186,10 @@ export default {
 /* Edit Button */
 .edit {
   background: #007bff;
+  color: white;
+}
+.show {
+  background: #ffc107;
   color: white;
 }
 
