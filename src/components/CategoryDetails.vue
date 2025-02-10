@@ -29,6 +29,7 @@ export default {
     }
   },
   async created() {
+    console.log(this.$route.params)
     const categoryId = this.$route.params.categoryId
     await this.fetchCategory(categoryId)
   },

@@ -6,6 +6,7 @@
       <div v-for="task in tasks" :key="task.id" class="task-card">
         <div v-if="editingTask !== task.id" class="task-details">
           <h3 class="task-title">{{ task.title }}</h3>
+          <h3 class="task-date">{{ task.date }}</h3>
           <p class="task-status" :class="statusClass(task.status)">
             {{ task.status }}
           </p>

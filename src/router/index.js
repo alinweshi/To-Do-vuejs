@@ -18,6 +18,11 @@ const router = createRouter({
           component: () => import('@/components/TaskList.vue'),
         },
         {
+          name: 'trashed',
+          path: '/tasks-trashed',
+          component: () => import('@/components/TrashedTasks.vue'),
+        },
+        {
           name: 'task-details',
           path: '/tasks/:taskId',
           component: () => import('@/components/TaskDetails.vue'),
@@ -40,6 +45,19 @@ const router = createRouter({
           path: '/profiles/:userId',
           component: () => import('@/components/UserProfile.vue'),
           props: true, // Allow route params as props in the component
+        },
+        {
+          path: '/about',
+          name: 'about',
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/AboutView.vue'),
+        },
+        {
+          path: '/contact',
+          name: 'contact',
+          component: () => import('@/views/ContactView.vue'),
         },
       ],
     },
@@ -90,15 +108,6 @@ const router = createRouter({
           component: () => import('@/components/ResetPassword.vue'),
         },
       ],
-    },
-
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
     },
   ],
 })
