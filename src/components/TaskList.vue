@@ -6,6 +6,7 @@
       <div v-for="task in tasks" :key="task.id" class="task-card">
         <div v-if="editingTask !== task.id" class="task-details">
           <h3 class="task-title">{{ task.title }}</h3>
+          <h3 class="task-date">{{ task.date }}</h3>
           <p class="task-status" :class="statusClass(task.status)">
             {{ task.status }}
           </p>
@@ -14,7 +15,7 @@
         <input v-else v-model="task.title" class="edit-input" @keyup.enter="updateTask(task)" />
 
         <div class="task-actions">
-          <button class="btn show" @click="getTask(task.id)">show</button>
+          <button class="btn show" @click="getTask(task.id)">👁️ Show</button>
 
           <button v-if="editingTask !== task.id" class="btn edit" @click="editTask(task.id)">
             ✏️ Edit
@@ -186,6 +187,10 @@ export default {
 /* Edit Button */
 .edit {
   background: #007bff;
+  color: white;
+}
+.show {
+  background: #ffc107;
   color: white;
 }
 

@@ -7,6 +7,7 @@
 
     <div v-else-if="task" class="task-card">
       <h2 class="task-title">{{ task.title }}</h2>
+      <h2 class="task-date">{{ task.date }}</h2>
       <p class="task-status" :class="statusClass(task.status)">
         {{ task.status }}
       </p>

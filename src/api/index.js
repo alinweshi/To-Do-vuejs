@@ -14,6 +14,9 @@ export default {
   getTasks() {
     return apiClient.get('/tasks')
   },
+  getTrashedTasks() {
+    return apiClient.get('/tasks/trashed')
+  },
   getTask(id) {
     return apiClient.get(`/tasks/${id}`)
   },
@@ -26,13 +29,16 @@ export default {
   deleteTask(id) {
     return apiClient.delete('/tasks/' + id)
   },
+  restoreTask(taskId) {
+    return apiClient.put(`/tasks/restore/${taskId}`)
+  },
 
   // Categories
   getCategories() {
     return apiClient.get('/categories')
   },
   getCategory(id) {
-    return apiClient.get('/categories/' + id)
+    return apiClient.get(`/categories/${id}`)
   },
   createCategory(category) {
     return apiClient.post('/categories', category)

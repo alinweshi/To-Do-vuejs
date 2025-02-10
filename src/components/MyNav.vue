@@ -10,7 +10,7 @@
       <input
         v-model="search"
         type="text"
-        placeholder="Search products..."
+        placeholder="Search ..."
         class="form-control"
         aria-label="Search Products"
       />
@@ -54,13 +54,13 @@ export default {
       search: '',
       myRoutes: [
         { name: 'Tasks', path: '/tasks' },
+        { name: 'Trashed Tasks', path: '/tasks-trashed' },
         { name: 'Categories', path: '/categories' },
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },
         {
           name: 'Profile',
           path: '/profiles/:userId/:userName',
-          query: { age: 20, grade: 10 },
         },
       ],
     }
@@ -69,9 +69,9 @@ export default {
     getRoute(link) {
       if (link.path.includes(':userId') && this.userStore.isLoggedIn) {
         const userId = this.userStore.user.id
-        const userName = `${this.userStore.user.first_name}_${this.userStore.user.last_name}`
-        const query = `?age=${link.query.age}&grade=${link.query.grade}`
-        return `/profiles/${userId}/${userName}${query}`
+        // const userName = `${this.userStore.user.first_name}_${this.userStore.user.last_name}`
+        // const query = `?age=${link.query.age}&grade=${link.query.grade}`
+        return `/profiles/${userId}`
       }
       return link.path
     },
